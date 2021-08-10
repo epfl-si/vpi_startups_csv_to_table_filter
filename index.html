@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>VPI CSV to Table filter</title>
+    <script
+      src="js/index.js"
+      type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <h1>VPI CSV to EPFL Table Filter</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="drop-area">
+      <form class="my-form">
+        <p>Drap and drop .csv file onto the dashed region</p>
+        <br>
+        <p>OR</p>
+        <br>
+        <p>Open the file dialog</p>
+        <input type="file" id="fileElem" onchange="handleFiles(this.files)">
+        <label class="button" for="fileElem">Browse</label>
+      </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Table Preview</h1>
+  </body>
+</html>
