@@ -1,4 +1,5 @@
 window.onload = async function(){
+  // Cherrypicked from https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
   let dropArea = document.getElementById('drop-area')
   ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false)
@@ -48,10 +49,10 @@ async function uploadFile(file) {
   var toto = await buildTable(fileString)
 }
 
-// Cherrypick from https://github.com/yasharma/CsvToTable
+// Cherrypicked from https://github.com/yasharma/CsvToTable
 function buildTable(csvFile) {
   var activeColumns = [0,1,2,15,17];
-  var prefix = `<!-- wp:epfl/table-filter -->\n<!-- wp:table {"className":"is-style-stripes"} -->\n<figure class="wp-block-table is-style-stripes">\n`;
+  var prefix = `<!-- wp:epfl/table-filter {"largeDisplay":true,"tableHeaderOptions":"header,sort"} -->\n<!-- wp:table {"className":"is-style-stripes"} -->\n<figure class="wp-block-table is-style-stripes">\n`;
   var suffix = `</figure>\n<!-- /wp:table -->\n<!-- /wp:epfl/table-filter -->`
     var allRows = csvFile.split(/\r?\n|\r/).filter(isNotEmpty);
         var table = prefix;
@@ -97,7 +98,7 @@ function isNotEmpty(row) {
     return row !== "";
 }
 
-//cherrypick from: https://stackoverflow.com/a/18197341/13715020
+//Cherrypicked from: https://stackoverflow.com/a/18197341/13715020
 function download(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
