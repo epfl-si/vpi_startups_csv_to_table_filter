@@ -38,3 +38,8 @@ p {
 #fileElem {
   display: none;
 }
+
+.draggable {
+    cursor: move;
+    user-select: none;
+}

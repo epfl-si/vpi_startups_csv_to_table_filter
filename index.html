@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>VPI CSV to Table filter</title>
-    <script
-      src="js/index.js"
-      type="text/javascript">
-    </script>
+    <script type="module" src="./js/Modules.js"></script>
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
@@ -22,14 +19,47 @@
         <p>OR</p>
         <br>
         <p>Open the file dialog</p>
-        <input type="file" id="fileElem" onchange="handleFiles(this.files)">
-        <label class="button" for="fileElem">Browse</label>
+        <input type="file" id="fileElem">
+        <label class="button" id="btnFileElem" for="fileElem" value="disabled">Browse</label>
+        <input type="hidden" id="copyBtn" value="Copy to clipboard 📋" onchange="copyToClipboard()" >
+        <label class="button" id="copyTableBtn" for="copyBtn">Copy to clipboard 📋</label>
+        <input type="button" id="totoBtn" name="toto" value="toto">
       </form>
     </div>
     <br>
     <br>
+    <div id="table">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Toto
+            </th>
+            <th>
+              Tutu
+            </th>
+            <th>
+              Titi
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+          </tr>
+          <tr>
+            <td>AAA</td>
+            <td>BBB</td>
+            <td>CCC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <br>
     <br>
     <h1>Table Preview</h1>
   </body>
+  <script type="text/javascript" src="./js/index.js"></script>
 </html>
