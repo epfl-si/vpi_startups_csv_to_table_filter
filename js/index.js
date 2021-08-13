@@ -1,6 +1,7 @@
-// import { toto } from './Table.js';
+import { toto } from './Table.js';
 window.onload = async function(){
   let totoBtn = document.getElementById('totoBtn');
+  console.log("toto");
 
   let copyTableBtn = document.getElementById('copyTableBtn');
   copyTableBtn.addEventListener('click', function() {
@@ -55,7 +56,7 @@ window.onload = async function(){
 
   let convertedFile = "";
   async function uploadFile(file) {
-    fileString = await file.text()
+    let fileString = await file.text()
     var convertedFile = await buildTable(fileString)
   }
 
