@@ -56,11 +56,12 @@ window.onload = async function(){
     ([...files]).forEach(uploadFile)
   }
 
+  let convertedFile = "";
   async function uploadFile(file) {
     console.log(file);
     fileString = await file.text()
     console.log(fileString);
-    var toto = await buildTable(fileString)
+    var convertedFile = await buildTable(fileString)
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
@@ -129,19 +130,22 @@ window.onload = async function(){
     handleFiles(fileElem.files)
   }
 
+  async function copyToClipboard(){
+    let fileElem = document.getElementById('fileElem')
+    ([...files]).forEach(uploadFile)
+    let fileString = await file.text()
+
+    navigator.clipboard.writeText(convertedFile).then(function() {
+      /* presse-papiers modifié avec succès */
+      console.log("Oui");
+    }, function() {
+      console.log("Non");
+      /* échec de l’écriture dans le presse-papiers */
+    });
+  }
 
 }
 
-function copyToClipboard(){
-  let fileElem = document.getElementById('fileElem')
-  navigator.clipboard.writeText("totocopié").then(function() {
-    /* presse-papiers modifié avec succès */
-    console.log("Oui");
-  }, function() {
-    console.log("Non");
-    /* échec de l’écriture dans le presse-papiers */
-  });
-}
 
 function hello(tata){
   // console.log("hello");
