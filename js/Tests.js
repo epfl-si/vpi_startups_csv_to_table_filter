@@ -1,5 +1,5 @@
 export class Tests {
-  constructor(table) {
+  constructor() {
     Tests.test = "defaultStr"
   }
 

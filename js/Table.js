@@ -3,11 +3,11 @@ export class Table {
   // static csvText = ""
   // static convertedText = ""
 
-  constructor(Utils, Tests) {
+  constructor(Modules) {
     Table.csvText = "";
     Table.convertedText = "";
-    Table.Utils = Utils;
-    Table.Tests = Tests
+    Table.Utils = Modules.Utils;
+    Table.Tests = Modules.Tests;
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable

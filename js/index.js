@@ -1,14 +1,19 @@
+import { Modules } from './Modules.js';
 
 import { Utils } from './Utils.js';
+Modules.Utils = Utils
 
 import { Tests } from './Tests.js';
-const testsInit = new Tests();
+Modules.Tests = Tests
 
 import { Table } from './Table.js';
-const tableInit = new Table(Utils, Tests)
+const tableInit = new Table(Modules)
+Modules.Table = Table
 
 import { eventHandlers } from './EventHandlers.js';
-eventHandlers(Table, Utils)
+eventHandlers(Modules)
+
+
 
 let testTableBtn = document.getElementById('testBtn');
 testTableBtn.addEventListener('click', function() {

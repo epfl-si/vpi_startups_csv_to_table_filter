@@ -1,7 +1,7 @@
-export function eventHandlers (Table, Utils) {
+export function eventHandlers (omniModules) {
   let copyTableBtn = document.getElementById('copyTableBtn');
-  copyTableBtn.addEventListener('click', function() {
-    Utils.copyToClipboard('rawCode')
+  copyTableBtn.addEventListener('click', async function() {
+    await omniModules.Utils.copyToClipboard('rawCode')
   });
 
 
@@ -51,8 +51,8 @@ export function eventHandlers (Table, Utils) {
   }
 
   async function uploadFile(file) {
-    Table.csvText = await file.text()
-    await Table.buildTable(Table.csvText)
+    omniModules.Table.csvText = await file.text()
+    await omniModules.Table.buildTable(omniModules.Table.csvText)
   }
 
 
