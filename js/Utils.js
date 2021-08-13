@@ -1,4 +1,14 @@
 export class Utils{
+
+  static test = ""
+  constructor(){
+    this.test = "emptyTest";
+  }
+
+  // static getTest(){
+  //   return Utils.#test
+  // }
+
   //Cherrypicked from: https://stackoverflow.com/a/18197341/13715020
   static download(filename, text) {
     var element = document.createElement('a');

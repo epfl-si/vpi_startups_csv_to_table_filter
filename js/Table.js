@@ -1,9 +1,15 @@
 export class Table {
-  constructor(Utils) {
-    this.csvText = "";
-    this.convertedText = "";
-    this.Utils = Utils;
+
+  // static csvText = ""
+  // static convertedText = ""
+
+  constructor(Utils, testsObj) {
+    Table.csvText = "";
+    Table.convertedText = "";
+    Table.Utils = Utils;
+    Table.testsObj = testsObj
   }
+
 
   convert(){
 
@@ -11,6 +17,9 @@ export class Table {
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
   buildTable(csvFileString) {
+    Table.testsObj.test = "ChangedValue"
+    Table.Utils.test = "toto"
+    Table.csvText = "tototata"
     var activeColumns = [0,1,2,15,17];
     var prefix = `<!-- wp:epfl/table-filter {"largeDisplay":true,"tableHeaderOptions":"header,sort"} -->\n<!-- wp:table {"className":"is-style-stripes"} -->\n<figure class="wp-block-table is-style-stripes">\n`;
     var suffix = `</figure>\n<!-- /wp:table -->\n<!-- /wp:epfl/table-filter -->`
@@ -22,6 +31,7 @@ export class Table {
         strTable += '<thead>';
         strTable += '<tr>';
       } else {
+
         strTable += '<tr>';
       }
       var rowCells = allRows[singleRow].split(',');
@@ -49,10 +59,10 @@ export class Table {
     strTable += '</tbody>';
     strTable += '</Table>';
     strTable += suffix;
-    this.convertedText = strTable
+    Table.convertedText = strTable
     document.getElementById('preview').innerHTML = strTable;
     document.getElementById('rawCode').textContent = strTable;
-    this.Utils.download("wp-strTable.txt", strTable)
+    Table.Utils.download("wp-strTable.txt", strTable)
     return strTable
 
     function isNotEmpty(row) {
