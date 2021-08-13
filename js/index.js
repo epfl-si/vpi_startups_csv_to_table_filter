@@ -1,9 +1,6 @@
 import { Table } from './Table.js';
 const table = new Table();
 // const tototo = new Table();
-window.onload = async function(){
-  let totoBtn = document.getElementById('totoBtn');
-
   let copyTableBtn = document.getElementById('copyTableBtn');
   copyTableBtn.addEventListener('click', function() {
     copyToClipboard('rawCode')
@@ -55,10 +52,9 @@ window.onload = async function(){
     ([...files]).forEach(uploadFile)
   }
 
-  let convertedFile = "";
   async function uploadFile(file) {
     table.csvText = await file.text()
-    var convertedFile = await buildTable(table.csvText)
+    await buildTable(table.csvText)
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
@@ -106,12 +102,13 @@ window.onload = async function(){
           document.getElementById('rawCode').textContent = strTable;
           // download("wp-strTable.txt", strTable)
     return strTable
+
+    function isNotEmpty(row) {
+        return row !== "";
+    }
   }
 
 
-  function isNotEmpty(row) {
-      return row !== "";
-  }
 
   //Cherrypicked from: https://stackoverflow.com/a/18197341/13715020
   function download(filename, text) {
@@ -138,8 +135,3 @@ window.onload = async function(){
     window.getSelection().addRange(range)
     document.execCommand('copy')
   }
-
-}
-
-
-let btnFileElem = document.getElementById('btnFileElem')
