@@ -3,7 +3,10 @@ window.onload = async function(){
   let totoBtn = document.getElementById('totoBtn');
 
   let copyTableBtn = document.getElementById('copyTableBtn');
-  copyTableBtn.addEventListener('click', copyToClipboard);
+  copyTableBtn.addEventListener('click', function() {
+    copyToClipboard('rawCode')
+  });
+
 
   // Cherrypicked from https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
   let dropArea = document.getElementById('drop-area')
@@ -11,7 +14,6 @@ window.onload = async function(){
 
   ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false)
-    // fileElem.addEventListener(eventName, preventDefaults, false)
   })
 
   function preventDefaults (e) {
@@ -20,10 +22,7 @@ window.onload = async function(){
   }
 
 
-  // fileElem.onchange = hello("toto")
   fileElem.addEventListener('change', getFiles)
-  // fileElem.addEventListener('change', handleFiles(fileElem.files))
-  // copyTableBtn.addEventListener('click', tutu)
   dropArea.classList.remove('highlight')
   document.addEventListener("drag", function(event) {
   }, false);
@@ -104,22 +103,12 @@ window.onload = async function(){
           table += '</tbody>';
           table += '</table>';
           table += suffix;
-          // document.body.preview.innerHTML += table;
           document.getElementById('preview').innerHTML = table;
           document.getElementById('rawCode').textContent = table;
           download("wp-table.txt", table)
     return table
   }
 
-  function copy(){
-    const el = document.getElementById('rawCode')
-    const selection = window.getSelection()
-    selection.removeAllRanges()
-    const range = document.createRange()
-    range.selectNodeContents(el)
-    window.getSelection().addRange(range)
-    document.execCommand('copy')
-  }
 
   function isNotEmpty(row) {
       return row !== "";
@@ -142,28 +131,14 @@ window.onload = async function(){
     handleFiles(fileElem.files)
   }
 
-  async function copyToClipboard(){
-    copy();
-    // let fileElem = document.getElementById('fileElem')
-    // ([...files]).forEach(uploadFile)
-    // let fileString = await file.text()
-
-    // navigator.clipboard.writeText("totottest").then(function() {
-    //   /* presse-papiers modifié avec succès */
-    //   console.log("Oui");
-    // }, function() {
-    //   console.log("Non");
-    //   /* échec de l’écriture dans le presse-papiers */
-    // });
-
-
-    // var dump = document.createElement("textarea");
-    // document.body.appendChild(dump);
-    // dump.value = "currentOutput";
-    // dump.select();
-    // document.execCommand("copy");
-    // document.body.removeChild(dump);
-    // alert("Mardkown has been copied to your clipboard");
+  async function copyToClipboard(tagID){
+    const el = document.getElementById(tagID)
+    const selection = window.getSelection()
+    selection.removeAllRanges()
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    window.getSelection().addRange(range)
+    document.execCommand('copy')
   }
 
 }
