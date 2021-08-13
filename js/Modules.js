@@ -1,1 +1,1 @@
-import { toto } from './Table.js';
+import { Table } from './Table.js';

@@ -1,7 +1,8 @@
-import { toto } from './Table.js';
+import { Table } from './Table.js';
+const tototo = new Table();
+tototo.toto();
 window.onload = async function(){
   let totoBtn = document.getElementById('totoBtn');
-  console.log("toto");
 
   let copyTableBtn = document.getElementById('copyTableBtn');
   copyTableBtn.addEventListener('click', function() {
