@@ -1,7 +1,7 @@
-export function eventHandlers (table) {
+export function eventHandlers (table, Utils) {
   let copyTableBtn = document.getElementById('copyTableBtn');
   copyTableBtn.addEventListener('click', function() {
-    copyToClipboard('rawCode')
+    Utils.copyToClipboard('rawCode')
   });
 
 
@@ -98,7 +98,7 @@ export function eventHandlers (table) {
     table.convertedText = strTable
     document.getElementById('preview').innerHTML = strTable;
     document.getElementById('rawCode').textContent = strTable;
-    // download("wp-strTable.txt", strTable)
+    Utils.download("wp-strTable.txt", strTable)
     return strTable
 
     function isNotEmpty(row) {
@@ -108,29 +108,12 @@ export function eventHandlers (table) {
 
 
 
-  //Cherrypicked from: https://stackoverflow.com/a/18197341/13715020
-  function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  }
+
 
   function getFiles(){
     let fileElem = document.getElementById('fileElem')
     handleFiles(fileElem.files)
   }
 
-  async function copyToClipboard(tagID){
-    const el = document.getElementById(tagID)
-    const selection = window.getSelection()
-    selection.removeAllRanges()
-    const range = document.createRange()
-    range.selectNodeContents(el)
-    window.getSelection().addRange(range)
-    document.execCommand('copy')
-  }
+
 }
