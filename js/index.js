@@ -50,16 +50,12 @@ window.onload = async function(){
 
 
   function handleFiles(files){
-    console.log("toto handle file");
-    console.log(typeof files);
     ([...files]).forEach(uploadFile)
   }
 
   let convertedFile = "";
   async function uploadFile(file) {
-    console.log(file);
     fileString = await file.text()
-    console.log(fileString);
     var convertedFile = await buildTable(fileString)
   }
 
@@ -127,7 +123,6 @@ window.onload = async function(){
 
   function getFiles(){
     let fileElem = document.getElementById('fileElem')
-    console.log(fileElem.files);
     handleFiles(fileElem.files)
   }
 
@@ -144,16 +139,4 @@ window.onload = async function(){
 }
 
 
-function hello(tata){
-  // console.log("hello");
-  console.log(tata);
-}
-function tutu(){
-  // console.log("hello");
-  console.log("tata");
-}
-
-
-
 let btnFileElem = document.getElementById('btnFileElem')
-// btnFileElem.addEventListener('click', tutu);
