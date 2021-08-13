@@ -10,10 +10,10 @@ import { Table } from './Table.js';
 const tableInit = new Table(Modules)
 Modules.Table = Table
 
-import { eventHandlers } from './EventHandlers.js';
-eventHandlers(Modules)
+import { EventHandlers } from './EventHandlers.js';
+const eventHandlersInit = new EventHandlers(Modules)
 
-
+EventHandlers.load()
 
 let testTableBtn = document.getElementById('testBtn');
 testTableBtn.addEventListener('click', function() {
