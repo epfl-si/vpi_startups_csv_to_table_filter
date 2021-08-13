@@ -11,7 +11,7 @@ export class Table {
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
-  static async buildTable(csvFileString) {
+  static buildTable(csvFileString) {
     Table.Tests.test = "ChangedValue"
     Table.Utils.test = "toto"
     Table.csvText = "tototata"

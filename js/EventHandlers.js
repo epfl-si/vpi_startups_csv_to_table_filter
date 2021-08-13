@@ -18,10 +18,8 @@ export class EventHandlers {
       await EventHandlers.Modules.Utils.copyToClipboard('rawCode')
     });
 
-
     // Cherrypicked from https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
     let dropArea = document.getElementById('drop-area')
-    let fileElem = document.getElementById('fileElem')
 
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       dropArea.addEventListener(eventName, preventDefaults, false)
@@ -32,8 +30,10 @@ export class EventHandlers {
       e.stopPropagation()
     }
 
-
-    fileElem.addEventListener('change', getFiles)
+    let fileElem = document.getElementById('fileElem')
+    fileElem.addEventListener('change', function(event) {
+      handleFiles(fileElem.files)
+    })
     dropArea.classList.remove('highlight')
     document.addEventListener("drag", function(event) {
     }, false);
@@ -59,28 +59,10 @@ export class EventHandlers {
       handleFiles(files)
     }, false)
 
-
     function handleFiles(files){
-      ([...files]).forEach(uploadFile)
-    }
-
-    async function uploadFile(file) {
-      EventHandlers.Modules.Table.csvText = await file.text()
-      await EventHandlers.Modules.Table.buildTable(EventHandlers.Modules.Table.csvText)
-    }
-
-
-
-
-
-
-
-    function getFiles(){
-      let fileElem = document.getElementById('fileElem')
-      handleFiles(fileElem.files)
+      ([...files]).forEach(async (file) => {
+        EventHandlers.Modules.Table.buildTable(await file.text())
+      })
     }
   }
-
-
-
 }
