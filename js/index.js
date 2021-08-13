@@ -109,6 +109,16 @@ window.onload = async function(){
     return table
   }
 
+  function copy(){
+    const el = document.getElementById('toto')
+    const selection = window.getSelection()
+    selection.removeAllRanges()
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    window.getSelection().addRange(range)
+    document.execCommand('copy')
+  }
+
   function isNotEmpty(row) {
       return row !== "";
   }
@@ -131,17 +141,27 @@ window.onload = async function(){
   }
 
   async function copyToClipboard(){
-    let fileElem = document.getElementById('fileElem')
-    ([...files]).forEach(uploadFile)
-    let fileString = await file.text()
+    copy();
+    // let fileElem = document.getElementById('fileElem')
+    // ([...files]).forEach(uploadFile)
+    // let fileString = await file.text()
 
-    navigator.clipboard.writeText(convertedFile).then(function() {
-      /* presse-papiers modifié avec succès */
-      console.log("Oui");
-    }, function() {
-      console.log("Non");
-      /* échec de l’écriture dans le presse-papiers */
-    });
+    // navigator.clipboard.writeText("totottest").then(function() {
+    //   /* presse-papiers modifié avec succès */
+    //   console.log("Oui");
+    // }, function() {
+    //   console.log("Non");
+    //   /* échec de l’écriture dans le presse-papiers */
+    // });
+
+
+    // var dump = document.createElement("textarea");
+    // document.body.appendChild(dump);
+    // dump.value = "currentOutput";
+    // dump.select();
+    // document.execCommand("copy");
+    // document.body.removeChild(dump);
+    // alert("Mardkown has been copied to your clipboard");
   }
 
 }
