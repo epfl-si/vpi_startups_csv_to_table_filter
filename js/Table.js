@@ -3,21 +3,16 @@ export class Table {
   // static csvText = ""
   // static convertedText = ""
 
-  constructor(Utils, testsObj) {
+  constructor(Utils, Tests) {
     Table.csvText = "";
     Table.convertedText = "";
     Table.Utils = Utils;
-    Table.testsObj = testsObj
-  }
-
-
-  convert(){
-
+    Table.Tests = Tests
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
-  buildTable(csvFileString) {
-    Table.testsObj.test = "ChangedValue"
+  static async buildTable(csvFileString) {
+    Table.Tests.test = "ChangedValue"
     Table.Utils.test = "toto"
     Table.csvText = "tototata"
     var activeColumns = [0,1,2,15,17];
@@ -62,7 +57,7 @@ export class Table {
     Table.convertedText = strTable
     document.getElementById('preview').innerHTML = strTable;
     document.getElementById('rawCode').textContent = strTable;
-    Table.Utils.download("wp-strTable.txt", strTable)
+    // Table.Utils.download("wp-strTable.txt", strTable)
     return strTable
 
     function isNotEmpty(row) {

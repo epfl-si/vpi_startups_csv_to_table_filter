@@ -1,14 +1,4 @@
 export class Utils{
-
-  static test = ""
-  constructor(){
-    this.test = "emptyTest";
-  }
-
-  // static getTest(){
-  //   return Utils.#test
-  // }
-
   //Cherrypicked from: https://stackoverflow.com/a/18197341/13715020
   static download(filename, text) {
     var element = document.createElement('a');
@@ -19,7 +9,6 @@ export class Utils{
     element.click();
     document.body.removeChild(element);
   }
-
   static async copyToClipboard(tagID){
     const el = document.getElementById(tagID)
     const selection = window.getSelection()

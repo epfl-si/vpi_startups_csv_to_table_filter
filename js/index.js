@@ -1,16 +1,14 @@
 
 import { Utils } from './Utils.js';
-const utils = new Utils();
-console.log(Utils.test);
 
 import { Tests } from './Tests.js';
-const testsObj = new Tests();
+const testsInit = new Tests();
 
 import { Table } from './Table.js';
-const table = new Table(Utils, testsObj);
+const tableInit = new Table(Utils, Tests)
 
 import { eventHandlers } from './EventHandlers.js';
-eventHandlers(table, Utils)
+eventHandlers(Table, Utils)
 
 
 // const tototo = new Table();
@@ -21,7 +19,7 @@ testTableBtn.addEventListener('click', function() {
   // console.log(Utils.test);
   // console.log(table.csvText);
   // console.log(table.convertedText);
-  console.log(testsObj.test);
+  console.log(testsInit.test);
   console.log(Tests.test);
 
 });

@@ -1,4 +1,4 @@
-export function eventHandlers (table, Utils) {
+export function eventHandlers (Table, Utils) {
   let copyTableBtn = document.getElementById('copyTableBtn');
   copyTableBtn.addEventListener('click', function() {
     Utils.copyToClipboard('rawCode')
@@ -51,8 +51,8 @@ export function eventHandlers (table, Utils) {
   }
 
   async function uploadFile(file) {
-    table.csvText = await file.text()
-    await table.buildTable(table.csvText)
+    Table.csvText = await file.text()
+    await Table.buildTable(Table.csvText)
   }
 
 
