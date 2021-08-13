@@ -1,6 +1,6 @@
 import { Table } from './Table.js';
-const tototo = new Table();
-tototo.toto();
+const table = new Table();
+// const tototo = new Table();
 window.onload = async function(){
   let totoBtn = document.getElementById('totoBtn');
 
@@ -62,11 +62,11 @@ window.onload = async function(){
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
-  function buildTable(csvFile) {
+  function buildTable(csvFileString) {
     var activeColumns = [0,1,2,15,17];
     var prefix = `<!-- wp:epfl/table-filter {"largeDisplay":true,"tableHeaderOptions":"header,sort"} -->\n<!-- wp:table {"className":"is-style-stripes"} -->\n<figure class="wp-block-table is-style-stripes">\n`;
     var suffix = `</figure>\n<!-- /wp:table -->\n<!-- /wp:epfl/table-filter -->`
-      var allRows = csvFile.split(/\r?\n|\r/).filter(isNotEmpty);
+      var allRows = csvFileString.split(/\r?\n|\r/).filter(isNotEmpty);
           var table = prefix;
           table += '<table>';
           for (var singleRow = 0; singleRow < allRows.length; singleRow++) {

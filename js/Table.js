@@ -1,9 +1,10 @@
 export class Table {
   constructor() {
-
+    this.csvText = "";
+    this.convertedText = "";
   }
 
-  toto(){
-    console.log("Toto");
+  convert(){
+    
   }
 }
