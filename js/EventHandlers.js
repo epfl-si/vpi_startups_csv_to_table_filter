@@ -5,6 +5,14 @@ export class EventHandlers {
   }
 
   static load(){
+
+    let testTableBtn = document.getElementById('testBtn');
+    testTableBtn.addEventListener('click', function() {
+      console.log(EventHandlers.Modules.Tests.test);
+      console.log(EventHandlers.Modules.Table.csvText);
+    });
+
+
     let copyTableBtn = document.getElementById('copyTableBtn');
     copyTableBtn.addEventListener('click', async function() {
       await EventHandlers.Modules.Utils.copyToClipboard('rawCode')

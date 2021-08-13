@@ -5,7 +5,7 @@ export class Modules {
     Table
   ) {
     Modules.Utils = new Utils();
-    Modules.Tests = new Tests();
+    Modules.Tests = new Tests("toto");
     Modules.Table = new Table(Modules.Utils, Modules.Tests);
   }
 }
