@@ -106,12 +106,13 @@ window.onload = async function(){
           table += suffix;
           // document.body.preview.innerHTML += table;
           document.getElementById('preview').innerHTML = table;
+          document.getElementById('rawCode').textContent = table;
           download("wp-table.txt", table)
     return table
   }
 
   function copy(){
-    const el = document.getElementById('preview')
+    const el = document.getElementById('rawCode')
     const selection = window.getSelection()
     selection.removeAllRanges()
     const range = document.createRange()
