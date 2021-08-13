@@ -57,8 +57,8 @@ window.onload = async function(){
 
   let convertedFile = "";
   async function uploadFile(file) {
-    let fileString = await file.text()
-    var convertedFile = await buildTable(fileString)
+    table.csvText = await file.text()
+    var convertedFile = await buildTable(table.csvText)
   }
 
   // Cherrypicked from https://github.com/yasharma/CsvToTable
@@ -67,44 +67,45 @@ window.onload = async function(){
     var prefix = `<!-- wp:epfl/table-filter {"largeDisplay":true,"tableHeaderOptions":"header,sort"} -->\n<!-- wp:table {"className":"is-style-stripes"} -->\n<figure class="wp-block-table is-style-stripes">\n`;
     var suffix = `</figure>\n<!-- /wp:table -->\n<!-- /wp:epfl/table-filter -->`
       var allRows = csvFileString.split(/\r?\n|\r/).filter(isNotEmpty);
-          var table = prefix;
-          table += '<table>';
+          var strTable = prefix;
+          strTable += '<Table>';
           for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
               if (singleRow === 0) {
-                  table += '<thead>';
-                  table += '<tr>';
+                  strTable += '<thead>';
+                  strTable += '<tr>';
               } else {
-                  table += '<tr>';
+                  strTable += '<tr>';
               }
               var rowCells = allRows[singleRow].split(',');
               for(var rowCell = 0; rowCell < rowCells.length; rowCell++){
                 if(activeColumns.includes(rowCell)){
                   if(singleRow === 0){
-                    table += '<th>';
-                    table += rowCells[rowCell];
-                    table += '</th>';
+                    strTable += '<th>';
+                    strTable += rowCells[rowCell];
+                    strTable += '</th>';
                   } else {
-                    table += '<td>';
-                    table += rowCells[rowCell];
-                    table += '</td>';
+                    strTable += '<td>';
+                    strTable += rowCells[rowCell];
+                    strTable += '</td>';
                   }
                 }
               }
               if (singleRow === 0) {
-                  table += '</tr>';
-                  table += '</thead>';
-                  table += '<tbody>';
+                  strTable += '</tr>';
+                  strTable += '</thead>';
+                  strTable += '<tbody>';
               } else {
-                  table += '</tr>';
+                  strTable += '</tr>';
               }
           }
-          table += '</tbody>';
-          table += '</table>';
-          table += suffix;
-          document.getElementById('preview').innerHTML = table;
-          document.getElementById('rawCode').textContent = table;
-          download("wp-table.txt", table)
-    return table
+          strTable += '</tbody>';
+          strTable += '</Table>';
+          strTable += suffix;
+          table.convertedText = strTable
+          document.getElementById('preview').innerHTML = strTable;
+          document.getElementById('rawCode').textContent = strTable;
+          // download("wp-strTable.txt", strTable)
+    return strTable
   }
 
 
